@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Timeline.less</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="css/docs.css" />
+		<link rel="stylesheet" href="css/bootstrap-override.css" />
+		<link rel="stylesheet" href="css/timeline.css" />
+	</head>
+	<body>
+		<div class="navbar navbar-inverse navbar-static-top">
+			<div class="container">
+				<!-- Not usefull now -->
+				<!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>-->
+				<a class="navbar-brand" href="/">Timeline.less</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="#intro" title="Intro">Intro</a></li>
+						<li><a href="#markup" title="Markup">Markup</a></li>
+						<li><a href="#demo" title="Demo">Demo</a></li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+		<div id="wrapper">
+			<div class="container">
+				<section id="intro" class="row">
+					<article class="col-12">
+						<header>
+							<h1 class="page-header">Timeline.less</h1>
+						</header>
+						<p>Timeline.less is a less based version of <a href="http://christian-fei.com/tutorials/simple-vertical-timeline-with-css/" title="Timeline.css">Timeline.css by Christian Fei</a> with some php ressources and tricks.</p>
+						<p>Timeline.less is mobile-first and works great with <a href="http://rc.getbootstrap.com/" title="Twitter Bootstrap">the third version of Twitter Bootstrap</a>. You can see it in action on <a href="http://www.maxime-baumann.fr/en/" title="Maxime Baumann's Portfolio">my portfolio</a>.</p>
+						<p>This code is not universal ! You have to set-up <code>.item</code> width in the timeline.less file to make it work with your respnsive layout !<br />The current configuration work with a custom Boostrap 3 grid (15px padding on the <code>.container</code> after the tablet media query).</p>
+						<p>If you find a way wich work with percents, you can make a pull-request or open an issue on Github.</p>
+					</article>
+				</section>
+				<section id="markup" class="row">
+					<article class="col-12">
+						<header>
+							<h1 class="page-header">Markup</h1>
+						</header>
+<pre><code>&lt;ul class="timeline"&gt;
+	&lt;!-- Begin a year --&gt;
+	&lt;li class="pre-year"&gt; &lt;/li&gt;
+	&lt;li class="year"&gt;2013&lt;/li&gt;
+	&lt;!-- Default : on the right --&gt;
+	&lt;li class="item"&gt;
+		&lt;div class="item-container"&gt;
+			&lt;div class="item-content"&gt;
+				&lt;h1&gt;Text exemple&lt;/h1&gt;
+				[Your content goes here]
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/li&gt;
+	&lt;!-- On the left --&gt;
+	&lt;li class="item item-left"&gt;
+		[Same markup]
+	&lt;/li&gt;
+	&lt;!-- Featured (Full width) --&gt;
+	&lt;li class="item-featured"&gt;
+		[Same markup]
+	&lt;/li&gt;
+	&lt;!-- Important : End the Timeline --&gt;
+	&lt;li class="timeline-end"&gt; &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+					</article>
+				</section>
+				<section id="demo" class="row">
+					<article class="col-12">
+						<header>
+							<h1 class="page-header">Demo</h1>
+						</header>
+						<ul class="timeline">
+							<li class="pre-year"> </li>
+							<li class="year">2013</li>
+							<li class="item">
+								<section class="item-container">
+									<article class="item-content">
+										<header class="item-header">
+											<h1>Text exemple</h1>
+										</header>
+										<p>Here is one text exemple. You can put some <a href="#">links</a> in it.</p>
+									</article>
+								</section>
+							</li>
+							<li class="item item-left">
+								<section class="item-container">
+									<article class="item-content">
+										<header class="item-header">
+											<h1>On left</h1>
+										</header>
+										<p>Add the <code>.item-left</code> class to your <code>.item</code> element to position your box on the left of the timeline</p>
+									</article>
+								</section>
+							</li>
+							<li class="item-featured">
+								<section class="item-container">
+									<article class="item-content">
+										<header class="item-header">
+											<h1>Featured item</h1>
+										</header>
+										<p>Replace the <code>.item</code> class of your element by <code>.item-featured</code> to give it a full width.</p>
+										<h4>Warning !</h4>
+										<p>You next item must be a <code>.item</code> element without the <code>.item-left</code> class. See the PHP code bellow for further explaination.</p>
+									</article>
+								</section>
+							</li>
+							<li class="item">
+								<section class="item-container">
+									<article class="item-content">
+										<header class="item-header">
+											<h1>Pictures</h1>
+										</header>
+										<p>You can add some pictures in your timeline. Be sure that they are responsive first !</p>
+									</article>
+								</section>
+							</li>
+							<li class="item item-left">
+								<section class="item-container">
+									<article class="item-content">
+										<img src="img/demo.png" alt="Demo picture" class="img-responsive" />
+									</article>
+								</section>
+							</li>
+							<li class="pre-year"> </li>
+							<li class="year">2012</li>
+							<li class="item">
+								<section class="item-container">
+									<article class="item-content">
+										<header class="item-header">
+											<h1>New year</h1>
+										</header>
+										<p>Add a <code>&lt;li class="pre-year"&gt; &lt;/li&gt;</code> (with the space) before every <code>li.year</code> to add margins between the end of the last year and the new year.</p>
+									</article>
+								</section>
+							</li>
+							<li class="item item-left">
+								<section class="item-container">
+									<article class="item-content">
+										<header class="item-header">
+											<h1>Timeline End</h1>
+										</header>
+										<p>The last <code>li</code> element must follow this markup to draw the timeline background : <code>&lt;li class="timeline-end"&gt; &lt;/li&gt;</code></p>
+									</article>
+								</section>
+							</li>
+							<li class="timeline-end"> </li>
+						</ul>
+					</article>
+				</section>
+			</div>
+		</div>
+	</body>
+</html>

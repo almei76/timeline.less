@@ -1,0 +1,229 @@
+/*!
+ * Timeline.less
+ *
+ * Timeline.less is an open source project by Maxime Baumann (@maxslayer44)
+ * based on Christian Fei (@christian_fei) Timeline.css
+ * See http://christian-fei.com/tutorials/simple-vertical-timeline-with-css/
+ * for more information
+ */
+
+// Vars
+// -------------------------
+
+@line-height: 20px;
+@screen-tablet: 768px;
+@screen-desktop: 992px;
+@screen-large-desktop: 1200px;
+@wet-asphalt: rgb(52, 73, 94);
+@midnight-blue: rgb(44, 62, 80);
+@sun-flower: rgb(241, 196, 15);
+@orange: rgb(243, 156, 18);
+@alizarin: rgb(231, 76, 60);
+@pomegranate: rgb(192, 57, 43);
+
+// Box sizing
+.box-sizing(@boxmodel) {
+  -webkit-box-sizing: @boxmodel;
+     -moz-box-sizing: @boxmodel;
+          box-sizing: @boxmodel;
+}
+
+// Reset the box-sizing
+// -------------------------
+
+*, *:after, *:before {
+  .box-sizing(border-box);
+}
+
+// Timeline
+// -------------------------
+
+.timeline {
+    margin: 0px auto @line-height;
+    height: auto;
+    position: relative;
+    padding: 0px;
+    list-style-type: none;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAEElEQVQIW2NMTEz8z8gABAAPKwIlXWq1kgAAAABJRU5ErkJggg==);
+    background-repeat: repeat-y;
+    background-position: 0 0;
+    &:before {
+        content:'';
+        position: absolute;
+        left: 0;
+        width:1px;
+        height:175px;
+        background-color: white;
+    }
+    a {
+        color:@sun-flower;
+        &:hover,&:focus {
+            color:@orange;
+        }
+    }
+    .year {
+        position: relative;
+        display: block;
+        width: 131px;
+        height: 131px;
+        font-size: 40px;
+        line-height: 110px;
+        clear: both;
+        margin: @line-height auto;
+        color: white;
+        border-radius: 500px;
+        text-align: center;
+        vertical-align: middle;
+        background-color: @wet-asphalt;
+        border: 10px solid @midnight-blue;
+        border-radius: 500px;
+    }
+    .pre-year {
+        position: relative;
+        display: block;
+        clear: both;
+        margin-bottom: (5*@line-height);
+        &:first-of-type {
+            margin-bottom: 0 !important;
+        }
+    }
+    .timeline-end {
+        position: absolute;
+        bottom: -10px;
+        left: -10px;
+        width: 21px;
+        height: 21px;
+        border-radius: 21px;
+        background-color: @wet-asphalt;
+    }
+    .item, .item-featured {
+        position: relative;
+        margin: 0 0 @line-height @line-height;
+        list-style-type: none;
+        display: block;
+        text-decoration: none;
+        &.item-blank {
+            display: none;
+        }
+        &:before {
+            content:'';
+            top: 20px;
+            left: -8px;
+            position: absolute;
+            display: block;
+            border-top: 8px solid transparent;
+            border-right: 8px solid @wet-asphalt;
+            border-bottom: 8px solid transparent;
+        }
+        &:after {
+            content:'';
+            position: absolute;
+            display: block;
+            top: 24px;
+            left: -23px;
+            width: 7px;
+            height: 7px;
+            background-color: @wet-asphalt;
+            border-radius: 8px;
+        }
+        .item-container {
+            text-decoration: none;
+            .item-header {
+                time {
+                    display: none;
+                }
+            }
+            .item-content {
+                position: relative;
+                background-color: @wet-asphalt;
+                color: white;
+                padding: 10px;
+            }
+        }
+    }
+    .item-featured {
+        &:before {
+            border-right: 8px solid @alizarin;
+        }
+        &:after {
+            content:'';
+            background-color: @alizarin;
+        }
+        .item-container {
+            .item-content {
+                background-color: @alizarin;
+            }
+        }
+    }
+}
+
+
+
+@media screen and (min-width: @screen-tablet) {
+    .timeline {
+        background-position: 50% 0;
+        .timeline-end {
+            position: relative;
+            bottom: auto;
+            left: auto;
+            display: block;
+            margin: auto;
+            clear: both;
+        }
+        .item {
+            float: right;
+            clear: right;
+            width: 329px;
+            &.item-left {
+                float: left;
+                clear: left;
+                margin: 20px @line-height @line-height 0;
+                &:before {
+                    right: -16px;
+                    left: auto;
+                    border-left: 8px solid @wet-asphalt;
+                    border-right: 8px solid transparent;
+                }
+                &:after {
+                    right: -23px;
+                    left: auto;
+                }
+            }
+        }
+        .item-featured {
+            clear: both;
+            margin: 0 0 @line-height 0;
+            &:before, &:after {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: @screen-desktop) {
+    .timeline {
+        .item {
+            width: 435px;
+            &:after {
+                left: -24px;
+                width: 9px;
+                height: 9px;
+                border-radius: 9px;
+            }
+            &.item-left {
+                &:after {
+                    right: -25px;
+                    left: auto;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: @screen-large-desktop) {
+    .timeline {
+        .item {
+            width: 550px;
+        }
+    }
+}
